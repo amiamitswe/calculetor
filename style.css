@@ -1,0 +1,88 @@
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #f2f2f2;
+}
+
+.container {
+	width: 100%;
+	height: auto;
+}
+
+.main-content {
+	background: lightblue;
+	max-width: 400px;
+	padding: 20px 0px;
+	margin: 0 auto;
+	margin-top: 50px;
+	border-radius: 10px;
+	box-shadow: 10px 10px 10px gray;
+}
+
+.screen {
+	margin-right: 50px;
+}
+
+.screen input {
+	width: 100%;
+	height: 70px;
+	font-size: 55px;
+	text-align: right;
+	padding: 0 5px;
+	border: none;
+	background: #7baaa3;
+	color: #fff;
+	border-radius: 5px;
+}
+
+.user-input {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	margin-top: 45px;
+}
+
+.input-items {
+	margin-right: 28px;
+}
+
+.input-items button {
+	width: 23%;
+	padding: 10px;
+	font-size: 20px;
+	margin-right: 1px;
+	border-radius: 10px;
+	box-shadow: 1px 1px 1px #000000;
+	transition: all 0.2s;
+}
+
+
+.input-items button:hover {
+	box-shadow: none;
+	cursor: pointer;
+}
+
+
+.input-items button:last-child {
+	margin-right: 0;
+}
+
+.input-items button.button-zero {
+	width: 47.5%;
+}
+
+.active_button {
+	background-color: red;
+	color: white;
+	box-shadow: none !important;
+	border: none !important;
+	cursor: not-allowed !important;
+}
+
+.dotButton {
+	background: deepskyblue;
+	color: white;
+	box-shadow: none !important;
+	border: none !important;
+	cursor: not-allowed !important;
+}
