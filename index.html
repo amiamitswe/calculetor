@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
 <head>
 	 <meta charset="UTF-8">
   <meta name="description" content="Free Web tutorials">
@@ -15,7 +15,8 @@
 	<section class="container">
 		<figure class="main-content">
 			<figure class="screen">
-				<input type="text" name="" id="input_value" placeholder="0" disabled>
+				<input type="text" class="operation-display" name="" id="operation-sign" placeholder="Null" disabled>
+				<input type="text" class="cal-display" name="" id="input_value" placeholder="0" disabled>
 			</figure>
 
 			<figure class="user-input">
@@ -23,29 +24,29 @@
 				<button onclick="clearDisplay()"><span>&#169;</span> </button>
 				<button class="action_button"><span>&#177;</span> </button>
 				<button class="action_button"><span>&#37;</span> </button>
-				<button class="action_button"><span>&#247;</span> </button>
+				<button id="division" onclick="division()" class="action_button division"><span>&#247;</span> </button>
 			</figure>
 			<figure class="input-items row-1">
-				<button id="7" onclick="getnumber(this.id)"><span>&#55;</span></button>
-				<button id="8" onclick="getnumber(this.id)"><span>&#56;</span></button>
-				<button id="9" onclick="getnumber(this.id)"><span>&#57;</span></button>
-				<button class="action_button"><span>&#215;</span></button>
+				<button id="7" onclick="getNumbers(this.id)" class="number_pad"><span>&#55;</span></button>
+				<button id="8" onclick="getNumbers(this.id)" class="number_pad"><span>&#56;</span></button>
+				<button id="9" onclick="getNumbers(this.id)" class="number_pad"><span>&#57;</span></button>
+				<button id="multiplication" onclick="multiplication()" class="action_button multiplication"><span>&#215;</span></button>
 			</figure>
 			<figure class="input-items row-1">
-				<button id="4" onclick="getnumber(this.id)"><span>&#52;</span></button>
-				<button id="5" onclick="getnumber(this.id)"><span>&#53;</span></button>
-				<button id="6" onclick="getnumber(this.id)"><span>&#54;</span></button>
+				<button id="4" onclick="getNumbers(this.id)" class="number_pad"><span>&#52;</span></button>
+				<button id="5" onclick="getNumbers(this.id)" class="number_pad"><span>&#53;</span></button>
+				<button id="6" onclick="getNumbers(this.id)" class="number_pad"><span>&#54;</span></button>
 				<button id="subtraction" onclick="subtraction()" class="action_button subtraction"><span>&#8722;</span></button>
 			</figure>
 			<figure class="input-items row-1">
-				<button id="1" onclick="getnumber(this.id)"><span>&#49;</span></button>
-				<button id="2" onclick="getnumber(this.id)"><span>&#50;</span></button>
-				<button id="3" onclick="getnumber(this.id)"><span>&#51;</span></button>
+				<button id="1" onclick="getNumbers(this.id)" class="number_pad"><span>&#49;</span></button>
+				<button id="2" onclick="getNumbers(this.id)" class="number_pad"><span>&#50;</span></button>
+				<button id="3" onclick="getNumbers(this.id)" class="number_pad"><span>&#51;</span></button>
 				<button id="addition" class="addition action_button" onclick="addition()"><span>&#43;</span></button>
 			</figure>
 			<figure class="input-items row-1">
-				<button id="0" onclick="getnumber(this.id)" class="button-zero"><span>&#48;</span></button>
-				<button id="." onclick="getnumber(this.id);" class="dots"><span>&#8729;</span></button>
+				<button id="0" onclick="getNumbers(this.id)" class="button-zero number_pad"><span>&#48;</span></button>
+				<button id="." onclick="getNumbers(this.id);" class="dots number_pad"><span>&#8729;</span></button>
 				<button id="equal" class="equal action_button" onclick="calculateEquation()"><span>&#61;</span></button>
 			</figure>
 			</figure>

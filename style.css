@@ -23,7 +23,7 @@ body {
 	margin-right: 50px;
 }
 
-.screen input {
+.screen .cal-display {
 	width: 100%;
 	height: 70px;
 	font-size: 55px;
@@ -33,6 +33,21 @@ body {
 	background: #7baaa3;
 	color: #fff;
 	border-radius: 5px;
+}
+
+.operation-display {
+	width: 30%;
+	height: 30px;
+	font-size: 30px;
+	text-align: center;
+	float: right;
+	padding: 0 5px;
+	border: none;
+	background: #7baaa3;
+	color: #fff;
+	border-radius: 5px;
+	margin-bottom: 5px;
+
 }
 
 .user-input {
