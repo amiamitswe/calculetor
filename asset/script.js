@@ -7,13 +7,16 @@ let myCalculator = {
     actionButtonPress: 0,
     result: 0,
     selected_button: 0,
-    operators: ""
+    operators: "",
+    calculateplusMinus: 0
 };
 
 const clearDisplay = () => {
     myCalculator.getNumber = [];
     myCalculator.inputValue = myCalculator.valueOne = myCalculator.result = myCalculator.actionButtonPress = 0;
-    document.querySelector("#input_value").value = 0;
+    myCalculator.operators = "";
+    document.querySelector("#input_value").value = "";
+    document.querySelector("#operation-sign").value = "";
     releaseDot();
     removeAllClass();
 };
@@ -72,6 +75,12 @@ const calculateEquation = () => {
             divisionRemoveStyle();
         }
 
+        if (myCalculator.operators === "%") {
+            myCalculator.result = (myCalculator.valueOne * myCalculator.getNumber) / 100;
+            viewOutput();
+            divisionRemoveStyle();
+        }
+
         myCalculator.getNumber = [0];
         myCalculator.actionButtonPress = 0;
         equalAddStyle();
@@ -100,7 +109,7 @@ const subtraction = () => {
         equalRemoveStyle();
         myCalculator.actionButtonPress = 2;
         myCalculator.operators = "-";
-        document.querySelector("#operation-sign").value = myCalculator.operators;
+        document.querySelector("#operation-sign").value = '\u2014';
         console.log("Subtraction button Pressed");
     }
 
@@ -114,7 +123,7 @@ const multiplication = () => {
         equalRemoveStyle();
         myCalculator.actionButtonPress = 3;
         myCalculator.operators = "*";
-        document.querySelector("#operation-sign").value = myCalculator.operators;
+        document.querySelector("#operation-sign").value = '\xD7';
         console.log("Multiplication button Pressed");
     }
 };
@@ -127,9 +136,45 @@ const division = () => {
         equalRemoveStyle();
         myCalculator.actionButtonPress = 4;
         myCalculator.operators = "/";
-        document.querySelector("#operation-sign").value = myCalculator.operators;
+        document.querySelector("#operation-sign").value = '\xF7';
         console.log("Division button Pressed");
     }
+};
+
+const percentage = () => {
+    if (myCalculator.actionButtonPress !== 5) {
+
+        checkCalculateValue();
+        percentageAddStyle();
+        equalRemoveStyle();
+        myCalculator.actionButtonPress = 5;
+        myCalculator.operators = "%";
+        document.querySelector("#operation-sign").value = myCalculator.operators;
+        console.log("Percentage button Pressed");
+    }
+};
+
+const addPlusMinus = () => {
+    if(myCalculator.inputValue === 0) {
+        document.querySelector("#input_value").value = 0;
+
+    }
+    else {
+        if(myCalculator.calculateplusMinus === 0) {
+            myCalculator.getNumber.unshift("-");
+            myCalculator.inputValue = parseFloat(myCalculator.getNumber.join(""));
+            document.querySelector("#input_value").value = myCalculator.inputValue;
+            myCalculator.calculateplusMinus = 1000;
+        }
+
+        else if (myCalculator.calculateplusMinus === 1000) {
+            myCalculator.getNumber.shift("-");
+            myCalculator.inputValue = parseFloat(myCalculator.getNumber.join(""));
+            document.querySelector("#input_value").value = myCalculator.inputValue;
+            myCalculator.calculateplusMinus = 0;
+        }
+    }
+    addPlusMinusAddStyle();
 };
 
 const viewOutput = () => {
@@ -146,10 +191,12 @@ const checkCalculateValue = () => {
         myCalculator.getNumber = [0];
         console.log("Value Saved");
         releaseDot();
+        addPlusMinusRemoveStyle();
     } else {
         myCalculator.valueOne = myCalculator.result;
         console.log("saved value for next calculation");
         releaseDot();
+        addPlusMinusRemoveStyle();
     }
 };
 
@@ -168,6 +215,11 @@ const releaseDot = () => {
 };
 
 const additionAddStyle = () => {
+    subtractionRemoveStyle();
+    multiplicationRemoveStyle();
+    divisionRemoveStyle();
+    addPlusMinusRemoveStyle();
+    percentageRemoveStyle();
     document.querySelector(".addition").disabled = true;
     document.querySelector(".addition").classList.add('active_button');
 };
@@ -188,6 +240,11 @@ const equalRemoveStyle = () => {
 };
 
 const subtractionAddStyle = () => {
+    additionRemoveStyle();
+    multiplicationRemoveStyle();
+    divisionRemoveStyle();
+    addPlusMinusRemoveStyle();
+    percentageRemoveStyle();
     document.querySelector(".subtraction").disabled = true;
     document.querySelector(".subtraction").classList.add('active_button');
 };
@@ -198,6 +255,11 @@ const subtractionRemoveStyle = () => {
 };
 
 const multiplicationAddStyle = () => {
+    additionRemoveStyle();
+    subtractionRemoveStyle();
+    divisionRemoveStyle();
+    addPlusMinusRemoveStyle();
+    percentageRemoveStyle();
     document.querySelector(".multiplication").disabled = true;
     document.querySelector(".multiplication").classList.add('active_button');
 };
@@ -208,6 +270,11 @@ const multiplicationRemoveStyle = () => {
 };
 
 const divisionAddStyle = () => {
+    additionRemoveStyle();
+    subtractionRemoveStyle();
+    multiplicationRemoveStyle();
+    addPlusMinusRemoveStyle();
+    percentageRemoveStyle();
     document.querySelector(".division").disabled = true;
     document.querySelector(".division").classList.add('active_button');
 };
@@ -215,6 +282,30 @@ const divisionAddStyle = () => {
 const divisionRemoveStyle = () => {
     document.querySelector(".division").disabled = false;
     document.querySelector(".division").classList.remove('active_button');
+};
+
+const addPlusMinusAddStyle = () => {
+    document.querySelector(".addPlusMinus").disabled = true;
+    document.querySelector(".addPlusMinus").classList.add('active_button');
+};
+
+const addPlusMinusRemoveStyle = () => {
+    document.querySelector(".division").disabled = false;
+    document.querySelector(".division").classList.remove('active_button');
+};
+
+const percentageAddStyle = () => {
+    additionRemoveStyle();
+    subtractionRemoveStyle();
+    multiplicationRemoveStyle();
+    addPlusMinusRemoveStyle();
+    divisionRemoveStyle();
+    document.querySelector(".percentage").disabled = true;
+    document.querySelector(".percentage").classList.add('active_button');
+};
+const percentageRemoveStyle = () => {
+    document.querySelector(".percentage").disabled = false;
+    document.querySelector(".percentage").classList.remove('active_button');
 };
 
 

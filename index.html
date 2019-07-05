@@ -9,21 +9,21 @@
 
 	<title>Calculetor</title>
 
-	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="asset/style.css">
 </head>
 <body>
 	<section class="container">
 		<figure class="main-content">
 			<figure class="screen">
-				<input type="text" class="operation-display" name="" id="operation-sign" placeholder="Null" disabled>
+				<input type="text" class="operation-display" name="" id="operation-sign" placeholder="N/A" disabled>
 				<input type="text" class="cal-display" name="" id="input_value" placeholder="0" disabled>
 			</figure>
 
 			<figure class="user-input">
 				<figure class="input-items row-1">
 				<button onclick="clearDisplay()"><span>&#169;</span> </button>
-				<button class="action_button"><span>&#177;</span> </button>
-				<button class="action_button"><span>&#37;</span> </button>
+				<button id="addPlusMinus" onclick="addPlusMinus()" class="action_button addPlusMinus"><span>&#177;</span> </button>
+				<button id="percentage" class="action_button percentage" onclick="percentage()"><span>&#37;</span> </button>
 				<button id="division" onclick="division()" class="action_button division"><span>&#247;</span> </button>
 			</figure>
 			<figure class="input-items row-1">
@@ -54,6 +54,6 @@
 	</section>
 
 
-<script type="text/javascript" src="script.js"></script>
+<script type="text/javascript" src="asset/script.js"></script>
 </body>
 </html>
